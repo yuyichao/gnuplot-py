@@ -532,7 +532,7 @@ class Gnuplot:
                     tic = Tic(*tic)
                 tics_strings.append(str(tic))
             tics_string = '(%s)' % (', '.join(tics_strings),)
-    self('set %stics %s' % (axis, tics_string,))
+        self('set %stics %s' % (axis, tics_string,))
 
     def hardcopy(self, filename=None, terminal='postscript', **keyw):
         """Create a hardcopy of the current plot.
