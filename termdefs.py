@@ -29,7 +29,7 @@ keyword arguments and build the 'set terminal' command.
 
 import types
 
-import gp, Errors
+from . import gp, Errors
 
 
 class Arg:
@@ -136,7 +136,7 @@ class StringArg(ArgOneParam):
 
         if k is None:
             return None
-        elif type(k) is not types.StringType:
+        elif type(k) is not bytes:
             raise Errors.OptionError(
                 'Option %s must be a string' % (self.argname,))
         else:
@@ -172,7 +172,7 @@ class BareStringArg(ArgOneParam):
             retval = []
             if self.fixedword is not None:
                 retval.append(self.fixedword)
-            if type(k) in (types.TupleType, types.ListType):
+            if type(k) in (tuple, list):
                 for i in k:
                     retval.append(str(i))
             else:

@@ -120,8 +120,7 @@ class GnuplotProcess:
         command = [GnuplotOpts.gnuplot_command]
         if persist:
             if not test_persist():
-                raise ('-persist does not seem to be supported '
-                       'by your version of gnuplot!')
+                raise '-persist does not seem to be supported '
             command.append('-persist')
 
         # This is a kludge: distutils wants to import everything it

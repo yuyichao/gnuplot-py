@@ -12,7 +12,7 @@ set.
 
 """
 
-import Errors
+from . import Errors
 
 # ############ Configuration variables: ################################
 

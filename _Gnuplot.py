@@ -14,7 +14,7 @@ interface to a running gnuplot process.
 
 import sys, string, types
 
-import gp, PlotItems, termdefs, Errors
+from . import gp, PlotItems, termdefs, Errors
 
 
 class _GnuplotFile:
@@ -247,7 +247,7 @@ class Gnuplot:
         for item in items:
             if isinstance(item, PlotItems.PlotItem):
                 self.itemlist.append(item)
-            elif type(item) is types.StringType:
+            elif type(item) is bytes:
                 self.itemlist.append(PlotItems.Func(item))
             else:
                 # assume data is an array:
@@ -348,7 +348,7 @@ class Gnuplot:
             sys.stderr.write('Press C-d to end interactive input\n')
         while 1:
             try:
-                line = raw_input('gnuplot>>> ')
+                line = input('gnuplot>>> ')
             except EOFError:
                 break
             self(line)
@@ -429,7 +429,7 @@ class Gnuplot:
 
         if value is None:
             self('set %s [*:*]' % (option,))
-        elif type(value) is types.StringType:
+        elif type(value) is bytes:
             self('set %s %s' % (option, value,))
         else:
             # Must be a tuple:
@@ -581,5 +581,3 @@ class Gnuplot:
         # reset the terminal to its `default' setting:
         self('set terminal %s' % gp.GnuplotOpts.default_term)
         self.set_string('output')
-
-

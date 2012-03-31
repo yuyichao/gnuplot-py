@@ -17,13 +17,13 @@ behavior.
 import os, string, tempfile, types
 
 try:
-    from cStringIO import StringIO
+    from io import StringIO
 except ImportError:
-    from StringIO import StringIO
+    from io import StringIO
 
 import numpy
 
-import gp, utils, Errors
+from . import gp, utils, Errors
 
 
 class _unset:
@@ -155,7 +155,7 @@ class PlotItem:
 
         if value is None:
             self._options[option] = (value, default)
-        elif type(value) is types.StringType:
+        elif type(value) is bytes:
             self._options[option] = (value, fmt % value)
         else:
             Errors.OptionError('%s=%s' % (option, value,))
@@ -309,9 +309,9 @@ class _FileItem(PlotItem):
     def set_option_colonsep(self, name, value):
         if value is None:
             self.clear_option(name)
-        elif type(value) in [types.StringType, types.IntType]:
+        elif type(value) in [bytes, int]:
             self._options[name] = (value, '%s %s' % (name, value,))
-        elif type(value) is types.TupleType:
+        elif type(value) is tuple:
             subopts = []
             for subopt in value:
                 if subopt is None:
@@ -498,7 +498,7 @@ def File(filename, **keyw):
 
     """
 
-    if type(filename) is not types.StringType:
+    if type(filename) is not bytes:
         raise Errors.OptionError(
             'Argument (%s) must be a filename' % (filename,)
             )
@@ -564,7 +564,7 @@ def Data(*data, **keyw):
     if 'cols' in keyw:
         cols = keyw['cols']
         del keyw['cols']
-        if isinstance(cols, types.IntType):
+        if isinstance(cols, int):
             cols = (cols,)
         data = numpy.take(data, cols, -1)
 

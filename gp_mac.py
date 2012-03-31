@@ -12,7 +12,7 @@
 
 import os, string
 
-import Errors
+from . import Errors
 
 
 # ############ Configuration variables: ################################
@@ -55,7 +55,7 @@ class GnuplotOpts:
 # The Macintosh doesn't support pipes so communication is via
 # AppleEvents.
 
-import gnuplot_Suites
+from . import gnuplot_Suites
 import Required_Suite
 import aetools
 
