@@ -12,7 +12,10 @@ set.
 
 """
 
-from . import Errors
+try:
+    from . import Errors
+except ValueError:
+    import Errors
 
 # ############ Configuration variables: ################################
 
@@ -132,5 +135,3 @@ class GnuplotProcess:
 
         self.write(s + '\n')
         self.flush()
-
-

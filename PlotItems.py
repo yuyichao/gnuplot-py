@@ -14,16 +14,16 @@ behavior.
 
 """
 
-import os, string, tempfile, types
+import os, tempfile, types
 
-try:
-    from io import StringIO
-except ImportError:
-    from io import StringIO
+from io import StringIO
 
 import numpy
 
-from . import gp, utils, Errors
+try:
+    from . import gp, utils, Errors
+except ValueError:
+    import gp, utils, Errors
 
 
 class _unset:
@@ -177,7 +177,7 @@ class PlotItem:
             (val,str) = self._options.get(opt, (None,None))
             if str is not None:
                 cmd.append(str)
-        return string.join(cmd)
+        return ' '.join(cmd)
 
     def command(self):
         """Build the plot command to be sent to gnuplot.
@@ -188,7 +188,7 @@ class PlotItem:
 
         """
 
-        return string.join([
+        return ' '.join([
             self.get_base_command_string(),
             self.get_command_option_string(),
             ])
@@ -320,7 +320,7 @@ class _FileItem(PlotItem):
                     subopts.append(str(subopt))
             self._options[name] = (
                 value,
-                '%s %s' % (name, string.join(subopts, ':'),),
+                '%s %s' % (name, ':'.join(subopts),),
                 )
         else:
             raise Errors.OptionError('%s=%s' % (name, value,))
@@ -498,7 +498,7 @@ def File(filename, **keyw):
 
     """
 
-    if type(filename) is not bytes:
+    if type(filename) is not str:
         raise Errors.OptionError(
             'Argument (%s) must be a filename' % (filename,)
             )
@@ -748,5 +748,3 @@ def GridData(
             return _FIFOFileItem(content, **keyw)
         else:
             return _NewFileItem(content, **keyw)
-
-

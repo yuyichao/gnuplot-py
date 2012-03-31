@@ -9,7 +9,10 @@
 
 """
 
-from . import Errors
+try:
+    from . import Errors
+except ValueError:
+    import Errors
 
 # ############ Configuration variables: ################################
 

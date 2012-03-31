@@ -99,7 +99,9 @@ def main():
         g.plot(f)
 
         print('############### test File ###################################')
+        os.system('ls /tmp/tmp*')
         wait('Generate a File from a filename')
+        os.system('ls /tmp/tmp*')
         g.plot(Gnuplot.File(filename1))
 
         wait('Style lines')

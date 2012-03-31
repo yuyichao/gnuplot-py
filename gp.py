@@ -26,17 +26,35 @@ import sys, string
 # the appropriate implementation of GnuplotProcess based on the
 # platform:
 if sys.platform == 'mac':
-    from .gp_mac import GnuplotOpts, GnuplotProcess, test_persist
+    try:
+        from .gp_mac import GnuplotOpts, GnuplotProcess, test_persist
+    except ValueError:
+        from gp_mac import GnuplotOpts, GnuplotProcess, test_persist
 elif sys.platform == 'win32':
-    from .gp_win32 import GnuplotOpts, GnuplotProcess, test_persist
+    try:
+        from .gp_win32 import GnuplotOpts, GnuplotProcess, test_persist
+    except ValueError:
+        from gp_win32 import GnuplotOpts, GnuplotProcess, test_persist
 elif sys.platform == 'darwin':
-    from .gp_macosx import GnuplotOpts, GnuplotProcess, test_persist
+    try:
+        from .gp_macosx import GnuplotOpts, GnuplotProcess, test_persist
+    except ValueError:
+        from gp_macosx import GnuplotOpts, GnuplotProcess, test_persist
 elif sys.platform[:4] == 'java':
-    from .gp_java import GnuplotOpts, GnuplotProcess, test_persist
+    try:
+        from .gp_java import GnuplotOpts, GnuplotProcess, test_persist
+    except ValueError:
+        from gp_java import GnuplotOpts, GnuplotProcess, test_persist
 elif sys.platform == 'cygwin':
-    from .gp_cygwin import GnuplotOpts, GnuplotProcess, test_persist
+    try:
+        from .gp_cygwin import GnuplotOpts, GnuplotProcess, test_persist
+    except ValueError:
+        from gp_cygwin import GnuplotOpts, GnuplotProcess, test_persist
 else:
-    from .gp_unix import GnuplotOpts, GnuplotProcess, test_persist
+    try:
+        from .gp_unix import GnuplotOpts, GnuplotProcess, test_persist
+    except ValueError:
+        from gp_unix import GnuplotOpts, GnuplotProcess, test_persist
 
 
 def double_quote_string(s):
@@ -46,5 +64,3 @@ def double_quote_string(s):
         s = string.replace(s, c, '\\' + c)
 
     return '"%s"' % (s,)
-
-

@@ -29,7 +29,10 @@ keyword arguments and build the 'set terminal' command.
 
 import types
 
-from . import gp, Errors
+try:
+    from . import gp, Errors
+except ValueError:
+    import gp, Errors
 
 
 class Arg:

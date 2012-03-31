@@ -141,5 +141,3 @@ class GnuplotProcess:
 
         self.write(s + '\n')
         self.flush()
-
-
