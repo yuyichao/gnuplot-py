@@ -15,6 +15,8 @@ interfaces.
 
 """
 
+from Gnuplot import Error
+
 # ############ Configuration variables: ################################
 
 class GnuplotOpts:
@@ -126,7 +128,6 @@ def test_persist():
     """
 
     if GnuplotOpts.recognizes_persist is None:
-        import string
         g = popen('echo | %s -persist 2>&1' % GnuplotOpts.gnuplot_command, 'r')
         response = g.readlines()
         g.close()
@@ -181,11 +182,11 @@ class GnuplotProcess:
         """
 
         if persist is None:
-            persist = GnuplotOpts.prefer_persist
+            persist = test_persist()
         if persist:
             if not test_persist():
-                raise ('-persist does not seem to be supported '
-                       'by your version of gnuplot!')
+                raise Error.Error('-persist does not seem to be supported '
+                                  'by your version of gnuplot!')
             self.gnuplot = popen('%s -persist' % GnuplotOpts.gnuplot_command,
                                  'w')
         else:

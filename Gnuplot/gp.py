@@ -41,7 +41,7 @@ else:
 def double_quote_string(s):
     """Return string s quoted and surrounded by double-quotes for gnuplot."""
 
-    for c in ['\\', '\"']:
+    for c in ['\\', '"']:
         s = s.replace(c, '\\' + c)
 
     return '"%s"' % (s,)
