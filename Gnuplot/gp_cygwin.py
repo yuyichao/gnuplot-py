@@ -12,10 +12,7 @@ set.
 
 """
 
-try:
-    from . import Errors
-except ValueError:
-    import Errors
+from Gnuplot import Errors
 
 # ############ Configuration variables: ################################
 

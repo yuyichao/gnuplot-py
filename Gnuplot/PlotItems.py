@@ -20,11 +20,7 @@ from io import StringIO
 
 import numpy
 
-try:
-    from . import gp, utils, Errors
-except ValueError:
-    import gp, utils, Errors
-
+from Gnuplot import gp, utils, Errors
 
 class _unset:
     """Used to represent unset keyword arguments."""

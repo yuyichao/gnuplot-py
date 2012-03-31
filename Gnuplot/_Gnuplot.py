@@ -14,10 +14,7 @@ interface to a running gnuplot process.
 
 import sys
 
-try:
-    from . import gp, PlotItems, termdefs, Errors
-except ValueError:
-    import gp, PlotItems, termdefs, Errors
+from Gnuplot import gp, PlotItems, termdefs, Errors
 
 
 class _GnuplotFile:

@@ -27,10 +27,7 @@ keyword arguments and build the 'set terminal' command.
 """
 
 
-try:
-    from . import gp, Errors
-except ValueError:
-    import gp, Errors
+from Gnuplot import gp, Errors
 
 
 class Arg:

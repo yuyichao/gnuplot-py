@@ -17,17 +17,7 @@ thorough test of many combinations of Gnuplot.py features.
 import os, time, math, tempfile
 import numpy
 
-try:
-    import Gnuplot, Gnuplot.PlotItems, Gnuplot.funcutils
-except ImportError:
-    # kludge in case Gnuplot hasn't been installed as a module yet:
-    import __init__
-    Gnuplot = __init__
-    import PlotItems
-    Gnuplot.PlotItems = PlotItems
-    import funcutils
-    Gnuplot.funcutils = funcutils
-
+import Gnuplot, Gnuplot.PlotItems, Gnuplot.funcutils
 
 def wait(str=None, prompt='Press return to show results...\n'):
     if str is not None:
@@ -225,7 +215,7 @@ def main():
         g.hardcopy('gp_test.ps', enhanced=0)
         wait('Testing hardcopy options: color=1')
         g.hardcopy('gp_test.ps', color=1)
-        # For some reason, 
+        # For some reason,
         #    g.hardcopy('gp_test.ps', color=0, solid=1)
         # doesn't work here (it doesn't activate the solid option), even
         # though the command sent to gnuplot looks correct.  I'll
@@ -251,7 +241,6 @@ def main():
 
         wait('Testing hardcopy svg options: enhanced')
         g.hardcopy('gp_test.ps', terminal='svg', enhanced='1')
-        
 
         print('############### test shortcuts ##############################')
         wait('plot Func and Data using shortcuts')
@@ -333,4 +322,3 @@ def main():
 # when executed, just run main():
 if __name__ == '__main__':
     main()
-

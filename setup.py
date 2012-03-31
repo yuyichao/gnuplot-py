@@ -12,7 +12,7 @@
 from distutils.core import setup
 
 # Get the version number from the __init__ file:
-from __init__ import __version__
+from Gnuplot import __version__
 
 long_description = """\
 Gnuplot.py is a Python package that allows you to create graphs from
@@ -36,7 +36,6 @@ setup (
     licence='LGPL',
 
     # Description of the package in the distribution
-    package_dir={'Gnuplot' : '.'},
+    package_dir={'Gnuplot' : 'Gnuplot'},
     packages=['Gnuplot'],
     )
-

@@ -14,8 +14,8 @@ points and tabulate the output to be used with Gnuplot.
 
 import numpy
 
-import Gnuplot, utils
-
+import Gnuplot
+from Gnuplot import utils
 
 def tabulate_function(f, xvals, yvals=None, dtype=None, ufunc=0):
     """Evaluate and tabulate a function on a 1- or 2-D grid of points.
