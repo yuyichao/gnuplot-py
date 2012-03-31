@@ -10,7 +10,7 @@
 
 """
 
-import os, string
+import os
 
 try:
     from . import Errors
@@ -121,11 +121,11 @@ class GnuplotProcess:
     def write(self, s):
         """Mac gnuplot apparently requires '\r' to end statements."""
 
-        self.gnuplot.gnuexec(string.replace(s, '\n', os.linesep))
+        self.gnuplot.gnuexec(s.replace('\n', os.linesep))
 
     def flush(self):
         pass
-        
+
     def __call__(self, s):
         """Send a command string to gnuplot, for immediate execution."""
 

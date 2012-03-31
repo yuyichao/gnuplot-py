@@ -131,7 +131,7 @@ def test_persist():
         response = g.readlines()
         g.close()
         GnuplotOpts.recognizes_persist = (
-            (not response) or (string.find(response[0], '-persist') == -1))
+            (not response) or (response[0].find('-persist') == -1))
     return GnuplotOpts.recognizes_persist
 
 

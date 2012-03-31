@@ -5,7 +5,7 @@
 # This file is licensed under the GNU Lesser General Public License
 # (LGPL).  See LICENSE.txt for details.
 
-"""gp_macosx -- an interface to the command line version of gnuplot 
+"""gp_macosx -- an interface to the command line version of gnuplot
 used under Mac OS X.
 
 The only difference between this interface and gp_unix is that
@@ -60,12 +60,11 @@ def test_persist():
     """
 
     if GnuplotOpts.recognizes_persist is None:
-        import string
         g = popen('echo | %s -persist 2>&1' % GnuplotOpts.gnuplot_command, 'r')
         response = g.readlines()
         g.close()
         GnuplotOpts.recognizes_persist = (
-            (not response) or (string.find(response[0], '-persist') == -1))
+            (not response) or (response[0].find('-persist') == -1))
     return GnuplotOpts.recognizes_persist
 
 

@@ -14,7 +14,7 @@ behavior.
 
 """
 
-import os, tempfile, types
+import os, tempfile
 
 from io import StringIO
 
@@ -155,7 +155,7 @@ class PlotItem:
 
         if value is None:
             self._options[option] = (value, default)
-        elif type(value) is bytes:
+        elif type(value) is str:
             self._options[option] = (value, fmt % value)
         else:
             Errors.OptionError('%s=%s' % (option, value,))
@@ -309,7 +309,7 @@ class _FileItem(PlotItem):
     def set_option_colonsep(self, name, value):
         if value is None:
             self.clear_option(name)
-        elif type(value) in [bytes, int]:
+        elif type(value) in [str, int]:
             self._options[name] = (value, '%s %s' % (name, value,))
         elif type(value) is tuple:
             subopts = []

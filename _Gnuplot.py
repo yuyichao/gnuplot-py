@@ -12,7 +12,7 @@ interface to a running gnuplot process.
 
 """
 
-import sys, types
+import sys
 
 try:
     from . import gp, PlotItems, termdefs, Errors
@@ -250,7 +250,7 @@ class Gnuplot:
         for item in items:
             if isinstance(item, PlotItems.PlotItem):
                 self.itemlist.append(item)
-            elif type(item) is bytes:
+            elif type(item) is str:
                 self.itemlist.append(PlotItems.Func(item))
             else:
                 # assume data is an array:
@@ -432,7 +432,7 @@ class Gnuplot:
 
         if value is None:
             self('set %s [*:*]' % (option,))
-        elif type(value) is bytes:
+        elif type(value) is str:
             self('set %s %s' % (option, value,))
         else:
             # Must be a tuple:

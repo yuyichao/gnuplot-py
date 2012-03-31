@@ -27,8 +27,6 @@ keyword arguments and build the 'set terminal' command.
 """
 
 
-import types
-
 try:
     from . import gp, Errors
 except ValueError:
@@ -139,7 +137,7 @@ class StringArg(ArgOneParam):
 
         if k is None:
             return None
-        elif type(k) is not bytes:
+        elif type(k) is not str:
             raise Errors.OptionError(
                 'Option %s must be a string' % (self.argname,))
         else:

@@ -20,7 +20,7 @@ gp_*.py modules.
 
 """
 
-import sys, string
+import sys
 
 # Low-level communication with gnuplot is platform-dependent.  Import
 # the appropriate implementation of GnuplotProcess based on the
@@ -61,6 +61,6 @@ def double_quote_string(s):
     """Return string s quoted and surrounded by double-quotes for gnuplot."""
 
     for c in ['\\', '\"']:
-        s = string.replace(s, c, '\\' + c)
+        s = s.replace(c, '\\' + c)
 
     return '"%s"' % (s,)
