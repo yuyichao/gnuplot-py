@@ -5,11 +5,12 @@
 # This file is licensed under the GNU Lesser General Public License
 # (LGPL).  See LICENSE.txt for details.
 
-"""Setup script for the Gnuplot module distribution.
+"""Setup script for the Gnuplot module distribution."""
 
-"""
-
-from distutils.core import setup
+try:
+    from setuptools import setup
+except ImportError:
+    from distutils.core import setup
 
 # Get the version number from the __init__ file:
 from Gnuplot import __version__

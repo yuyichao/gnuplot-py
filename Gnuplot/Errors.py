@@ -21,5 +21,3 @@ class OptionError(Error):
 class DataError(Error):
     """Raised for data in the wrong format"""
     pass
-
-

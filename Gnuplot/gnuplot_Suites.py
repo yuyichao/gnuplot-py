@@ -566,7 +566,7 @@ class Miscellaneous_Events:
 
     def do_script(self, _object=None, _attributes={}, **_arguments):
         """do script: execute a gnuplot script
-        Required argument: a gnuplot script 
+        Required argument: a gnuplot script
         Keyword argument _attributes: AppleEvent attribute dictionary
         """
         _code = 'misc'

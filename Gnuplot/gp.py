@@ -27,7 +27,7 @@ import sys
 # platform:
 if sys.platform == 'mac':
     from Gnuplot.gp_mac import GnuplotOpts, GnuplotProcess, test_persist
-elif sys.platform == 'win32':
+elif sys.platform == 'win32' or sys.platform == 'cli':
     from Gnuplot.gp_win32 import GnuplotOpts, GnuplotProcess, test_persist
 elif sys.platform == 'darwin':
     from Gnuplot.gp_macosx import GnuplotOpts, GnuplotProcess, test_persist
