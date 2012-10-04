@@ -15,7 +15,7 @@ interfaces.
 
 """
 
-from Gnuplot import Error
+from Gnuplot import Errors
 
 # ############ Configuration variables: ################################
 
@@ -185,8 +185,8 @@ class GnuplotProcess:
             persist = test_persist()
         if persist:
             if not test_persist():
-                raise Error.Error('-persist does not seem to be supported '
-                                  'by your version of gnuplot!')
+                raise Errors.Error('-persist does not seem to be supported '
+                                   'by your version of gnuplot!')
             self.gnuplot = popen('%s -persist' % GnuplotOpts.gnuplot_command,
                                  'w')
         else:
